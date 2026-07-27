@@ -924,12 +924,12 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
             </label>
           </div>
           <button type="submit" class="btn btn-gold btn-block">Submit Application <svg width="15" height="15"><use href="#i-arrow"/></svg></button>
-          <p class="c-note">Your information is kept confidential and used only for recruitment purposes.</p>
+          <p class="c-note">Applications sent to hr@nextattva.com · Your information is kept confidential.</p>
         </form>
         <div class="career-success" id="careerSuccess">
           <span class="cs-tick"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></svg></span>
           <h3>Application received!</h3>
-          <p>Thank you for your interest in NexTattva. We'll review your profile and get back to you within a few business days.</p>
+          <p>Your details have been prepared as a draft email to <strong>hr@nextattva.com</strong>. Please <strong>attach your CV</strong> to the email that has opened and click Send to complete your application. We respond within 3–5 business days.</p>
         </div>
       </div>
     </div>
@@ -1007,12 +1007,12 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
             <textarea id="f-message" name="message" required placeholder="Tell us about your business and what you're looking to solve"></textarea>
           </div>
           <button type="submit" class="btn btn-gold btn-block">Book Your Free Consultation <svg><use href="#i-arrow"/></svg></button>
-          <p class="form-note">By submitting, you agree to be contacted by NexTattva about your enquiry.</p>
+          <p class="form-note">Enquiries sent to info@nextattva.com · We respond within one business day.</p>
         </form>
         <div class="form-success" id="formSuccess">
           <span class="fs-ico"><svg><use href="#i-check"/></svg></span>
           <h3>Thanks — your message is in.</h3>
-          <p>A NexTattva consultant will get back to you within one business day.</p>
+          <p>Your enquiry has been sent to <strong>info@nextattva.com</strong>. A NexTattva consultant will get back to you within one business day.</p>
         </div>
       </div>
 
@@ -1086,6 +1086,7 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
         <h4>Contact</h4>
         <ul>
           <li><span>info@nextattva.com</span></li>
+          <li><span>hr@nextattva.com</span></li>
           <li><span>+91 99742 60504</span></li>
           <li><span>Ahmedabad, Gujarat, India</span></li>
           <li><span>Mon–Sat, 10:00 AM–07:00 PM</span></li>
@@ -1253,40 +1254,81 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
     }, {threshold:0.3}).observe(dash);
   } else { animateDash(); }
 
-  /* Contact form */
+
+  /* ── CONTACT FORM → info@nextattva.com ── */
   var form    = document.getElementById('contactForm');
   var success = document.getElementById('formSuccess');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!form.checkValidity()){ form.reportValidity(); return; }
-    form.style.display = 'none';
-    success.classList.add('is-shown');
-  });
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var name    = document.getElementById('f-name').value;
+      var company = document.getElementById('f-company').value;
+      var email   = document.getElementById('f-email').value;
+      var phone   = document.getElementById('f-phone').value;
+      var service = document.getElementById('f-service').value;
+      var message = document.getElementById('f-message').value;
+      var subject = encodeURIComponent('Consultation Request — ' + (company || name));
+      var body    = encodeURIComponent(
+        'Name: '                  + name                         + '\n' +
+        'Company: '               + (company || 'Not provided')  + '\n' +
+        'Email: '                 + email                        + '\n' +
+        'Phone: '                 + (phone   || 'Not provided')  + '\n' +
+        'Service Interested In: ' + (service || 'Not specified') + '\n\n' +
+        'Message:\n'              + message
+      );
+      window.location.href = 'mailto:info@nextattva.com?subject=' + subject + '&body=' + body;
+      form.style.display = 'none';
+      success.classList.add('is-shown');
+    });
+  }
 
-  /* Career application form */
-  var cForm    = document.getElementById('careerForm');
-  var cSuccess = document.getElementById('careerSuccess');
-  var cResume  = document.getElementById('c-resume');
+  /* ── CAREER FORM → hr@nextattva.com ── */
+  var cForm       = document.getElementById('careerForm');
+  var cSuccess    = document.getElementById('careerSuccess');
+  var cResume     = document.getElementById('c-resume');
   var uploadZone  = document.getElementById('uploadZone');
   var uploadLabel = document.getElementById('uploadLabel');
   if(cResume){
     cResume.addEventListener('change', function(){
       if(this.files && this.files[0]){
-        uploadLabel.textContent = this.files[0].name;
-        uploadZone.classList.add('has-file');
+        if(this.files[0].size > 5*1024*1024){ alert('File exceeds 5 MB.'); this.value=''; return; }
+        if(uploadLabel) uploadLabel.textContent = this.files[0].name;
+        if(uploadZone)  uploadZone.classList.add('has-file');
       } else {
-        uploadLabel.innerHTML = 'Click to upload or drag &amp; drop';
-        uploadZone.classList.remove('has-file');
+        if(uploadLabel) uploadLabel.innerHTML = 'Click to upload or drag &amp; drop';
+        if(uploadZone)  uploadZone.classList.remove('has-file');
       }
     });
-    // drag-over highlight
-    uploadZone.addEventListener('dragover', function(e){ e.preventDefault(); uploadZone.classList.add('has-file'); });
-    uploadZone.addEventListener('dragleave', function(){ if(!cResume.files || !cResume.files[0]) uploadZone.classList.remove('has-file'); });
+    if(uploadZone){
+      uploadZone.addEventListener('dragover', function(e){ e.preventDefault(); this.classList.add('has-file'); });
+      uploadZone.addEventListener('dragleave', function(){ if(!cResume.files||!cResume.files[0]) this.classList.remove('has-file'); });
+    }
   }
   if(cForm){
     cForm.addEventListener('submit', function(e){
       e.preventDefault();
       if(!cForm.checkValidity()){ cForm.reportValidity(); return; }
+      if(!cResume || !cResume.files || !cResume.files[0]){ alert('Please upload your resume before submitting.'); return; }
+      var name     = document.getElementById('c-name').value;
+      var email    = document.getElementById('c-email').value;
+      var phone    = document.getElementById('c-phone').value;
+      var role     = document.getElementById('c-role').value;
+      var linkedin = (document.getElementById('c-linkedin') || {}).value || '';
+      var note     = (document.getElementById('c-note')    || {}).value || '';
+      var fname    = cResume.files[0].name;
+      var subject  = encodeURIComponent('Job Application: ' + (role||'Open Role') + ' — ' + name);
+      var body     = encodeURIComponent(
+        'Full Name: '            + name                         + '\n' +
+        'Email: '                + email                        + '\n' +
+        'Phone: '                + (phone    || 'Not provided') + '\n' +
+        'Role Applied For: '     + (role     || 'Not specified')+ '\n' +
+        'LinkedIn / Portfolio: ' + (linkedin || 'Not provided') + '\n\n' +
+        (note ? 'Cover Note:\n' + note + '\n\n' : '') +
+        'Resume file: '          + fname                        + '\n' +
+        '(Please attach the CV to this email before sending.)'
+      );
+      window.location.href = 'mailto:hr@nextattva.com?subject=' + subject + '&body=' + body;
       cForm.style.display = 'none';
       cSuccess.classList.add('is-shown');
     });
