@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    DESIGN TOKENS
@@ -98,8 +98,11 @@ h1,h2,h3,h4{font-family:var(--font-d);color:var(--navy-950);font-weight:600;lett
 .nav{position:fixed;top:0;left:0;right:0;z-index:90;height:var(--nav-h);display:flex;align-items:center;background:rgba(250,250,247,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:background .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);}
 .nav.is-scrolled{background:rgba(250,250,247,.94);border-color:var(--gray-200);box-shadow:0 2px 24px rgba(10,37,64,.06);}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
-.brand{display:flex;align-items:center;gap:9px;font-family:var(--font-d);font-weight:700;font-size:18.5px;color:var(--navy-950);flex-shrink:0;}
-.brand .mark{width:24px;height:24px;color:var(--gold-600);}
+/* LOGO WORDMARK — matches uploaded PNG */
+.brand{display:flex;align-items:center;flex-shrink:0;text-decoration:none;}
+.brand .mark{display:none;} /* hide old diamond icon */
+.logo-svg{height:34px;width:auto;display:block;}
+.foot-brand .logo-svg .logo-dark{fill:var(--white);}
 
 /* Desktop nav links */
 .nav-links{display:flex;align-items:center;gap:2px;}
@@ -390,8 +393,6 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.1fr;gap:28px;padding-bottom:42px;border-bottom:1px solid rgba(255,255,255,.08);}
 @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.foot-grid{grid-template-columns:1fr;}}
-.foot-brand .brand{color:var(--white);}
-.foot-brand .brand .mark{color:var(--gold-500);}
 .foot-brand p{margin-top:13px;font-size:13.5px;max-width:250px;color:#7e92a3;}
 .foot-social{display:flex;gap:9px;margin-top:18px;}
 .foot-social a{width:33px;height:33px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;font-family:var(--font-m);color:#cfdbe6;transition:background .2s var(--ease),border-color .2s var(--ease);}
@@ -481,7 +482,13 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
      ============================================================ -->
 <header class="nav" id="siteNav">
   <div class="wrap">
-    <a href="#home" class="brand"><svg class="mark"><use href="#i-diamond"/></svg>NexTattva</a>
+    <a href="#home" class="brand" aria-label="NexTattva – Home">
+      <svg class="logo-svg" viewBox="0 0 318 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text y="40" font-family="'Rajdhani', 'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="1">
+          <tspan class="logo-dark" fill="#143d59">NEX</tspan><tspan fill="#f4b41a">T</tspan><tspan class="logo-dark" fill="#143d59">ATTVA</tspan>
+        </text>
+      </svg>
+    </a>
 
     <nav class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
       <a href="#home">Home</a>
@@ -1048,7 +1055,13 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#home" class="brand"><svg class="mark"><use href="#i-diamond"/></svg>NexTattva</a>
+        <a href="#home" class="brand" aria-label="NexTattva – Home">
+          <svg class="logo-svg" viewBox="0 0 318 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <text y="40" font-family="'Rajdhani', 'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="1">
+              <tspan fill="#ffffff">NEX</tspan><tspan fill="#f4b41a">T</tspan><tspan fill="#ffffff">ATTVA</tspan>
+            </text>
+          </svg>
+        </a>
         <p>Transforming Processes. Strengthening Businesses. Driving Sustainable Growth.</p>
         <div class="foot-social">
           <a href="#" aria-label="LinkedIn">in</a>
