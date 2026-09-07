@@ -198,32 +198,67 @@ h1,h2,h3,h4{font-family:var(--font-d);color:var(--navy-950);font-weight:600;lett
 .why-card h3{color:var(--white);font-size:16px;}
 .why-card p{color:#9fb0bf;font-size:13.5px;margin-top:7px;}
 
-/* ============================================================
-   SERVICES — TAB SYSTEM
-   ============================================================ */
-.srv-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:42px;}
-.srv-tab{display:flex;align-items:center;gap:10px;padding:14px 22px;border-radius:var(--r-md);border:1.5px solid var(--gray-200);background:var(--white);color:var(--navy-900);font-family:var(--font-d);font-weight:600;font-size:15px;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease),box-shadow .25s var(--ease);cursor:pointer;text-align:left;}
-.srv-tab svg{width:20px;height:20px;flex-shrink:0;opacity:.7;transition:opacity .25s var(--ease);}
-.srv-tab:hover{border-color:var(--navy-700);box-shadow:var(--shadow-sm);}
-.srv-tab.is-active{background:var(--navy-950);border-color:var(--navy-950);color:var(--gold-500);box-shadow:var(--shadow-md);}
-.srv-tab.is-active svg{opacity:1;}
-@media(max-width:760px){.srv-tabs{gap:8px;}.srv-tab{padding:12px 16px;font-size:13.8px;}}
-@media(max-width:480px){.srv-tab .tab-lbl{display:none;}.srv-tab{padding:13px 16px;}}
 
-.srv-panel{display:none;}
-.srv-panel.is-active{display:block;}
-.panel-intro{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--gray-200);}
-@media(max-width:760px){.panel-intro{grid-template-columns:1fr;gap:16px;margin-bottom:24px;padding-bottom:20px;}}
-.panel-intro h3{font-size:clamp(20px,2.5vw,28px);}
-.panel-intro p{font-size:15.5px;color:var(--slate-600);}
-.sub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-@media(max-width:900px){.sub-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:520px){.sub-grid{grid-template-columns:1fr;}}
-.sub-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:24px 20px;transition:border-color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease);}
-.sub-card:hover{border-color:var(--gold-500);transform:translateY(-4px);box-shadow:var(--shadow-sm);}
-.sub-num{font-family:var(--font-m);font-size:11.5px;color:var(--gold-600);font-weight:600;letter-spacing:.05em;margin-bottom:14px;display:block;}
-.sub-card h4{font-size:15.5px;color:var(--navy-950);}
-.sub-card p{font-size:13.3px;margin-top:7px;color:var(--slate-500);}
+/* ============================================================
+   SERVICES — Big 4 Sidebar Layout
+   ============================================================ */
+.srv-shell{display:grid;grid-template-columns:290px 1fr;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 28px 80px rgba(10,37,64,.18);min-height:680px;}
+@media(max-width:960px){.srv-shell{grid-template-columns:1fr;min-height:auto;border-radius:var(--r-md);}}
+
+.srv-nav{background:var(--navy-950);padding:10px;display:flex;flex-direction:column;gap:4px;}
+@media(max-width:960px){.srv-nav{flex-direction:row;overflow-x:auto;padding:10px 10px 0;gap:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.srv-nav::-webkit-scrollbar{display:none;}}
+
+.srv-nav-btn{display:flex;align-items:center;gap:13px;padding:16px 14px;border-radius:10px;border:none;background:none;cursor:pointer;text-align:left;width:100%;position:relative;transition:background .22s var(--ease);}
+.srv-nav-btn::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:var(--gold-500);opacity:0;transition:opacity .22s var(--ease);}
+.srv-nav-btn:hover{background:rgba(255,255,255,.06);}
+.srv-nav-btn.is-active{background:rgba(255,255,255,.1);}
+.srv-nav-btn.is-active::before{opacity:1;}
+@media(max-width:960px){.srv-nav-btn{flex-direction:column;align-items:center;gap:7px;padding:12px 16px 16px;width:auto;flex-shrink:0;text-align:center;border-radius:10px 10px 0 0;}.srv-nav-btn::before{top:auto;bottom:0;left:8px;right:8px;width:auto;height:3px;border-radius:3px 3px 0 0;}}
+
+.srv-nav-ico{width:38px;height:38px;border-radius:9px;background:rgba(244,180,26,.12);color:var(--gold-500);display:flex;align-items:center;justify-content:center;flex:none;transition:background .22s var(--ease),color .22s var(--ease);}
+.srv-nav-ico svg{width:19px;height:19px;}
+.srv-nav-btn.is-active .srv-nav-ico{background:var(--gold-500);color:var(--navy-950);}
+.srv-nav-text{flex:1;min-width:0;}
+@media(max-width:960px){.srv-nav-text{display:none;}}
+.srv-nav-num{display:block;font-family:var(--font-m);font-size:10px;color:#4e6070;font-weight:600;letter-spacing:.08em;margin-bottom:4px;transition:color .22s var(--ease);}
+.srv-nav-btn.is-active .srv-nav-num{color:var(--gold-500);}
+.srv-nav-name{display:block;font-family:var(--font-d);font-weight:600;font-size:13.8px;color:#b5c6d4;line-height:1.3;transition:color .22s var(--ease);}
+.srv-nav-btn.is-active .srv-nav-name{color:var(--white);}
+.srv-nav-tag{display:block;font-size:11px;color:#4a5f6e;margin-top:3px;font-family:var(--font-m);transition:color .22s var(--ease);}
+.srv-nav-btn.is-active .srv-nav-tag{color:#7a8f9c;}
+
+.srv-content{background:var(--white);display:flex;flex-direction:column;}
+.srv-body{display:none;flex-direction:column;flex:1;}
+.srv-body.is-active{display:flex;}
+
+.srv-ph{background:linear-gradient(135deg,var(--navy-900),var(--navy-950));padding:34px 40px 30px;position:relative;overflow:hidden;}
+.srv-ph::before{content:"";position:absolute;top:-80px;right:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(244,180,26,.13),transparent 70%);}
+.srv-ph::after{content:"";position:absolute;bottom:0;left:40px;right:40px;height:1px;background:rgba(255,255,255,.08);}
+@media(max-width:960px){.srv-ph{padding:26px 22px;}.srv-ph::after{left:22px;right:22px;}}
+.srv-ph-tag{font-family:var(--font-m);font-size:10.5px;color:var(--gold-500);letter-spacing:.12em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+.srv-ph-tag::before{content:"";width:18px;height:1.5px;background:var(--gold-500);flex:none;}
+.srv-ph h3{color:var(--white);font-size:clamp(18px,2vw,24px);line-height:1.2;max-width:620px;}
+.srv-ph p{color:#9fb0bf;font-size:14.5px;margin-top:11px;max-width:620px;line-height:1.65;}
+
+.srv-subs{padding:28px 36px 36px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;flex:1;align-content:start;}
+@media(max-width:1100px){.srv-subs{grid-template-columns:1fr 1fr;}}
+@media(max-width:960px){.srv-subs{grid-template-columns:1fr;padding:20px 20px 26px;gap:14px;}}
+
+.srv-sub{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--r-md);padding:24px 22px;position:relative;overflow:hidden;transition:border-color .25s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);}
+.srv-sub::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-500),var(--gold-600));opacity:0;transition:opacity .25s var(--ease);}
+.srv-sub:hover{border-color:transparent;transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.srv-sub:hover::before{opacity:1;}
+.srv-sub-head{display:flex;align-items:center;gap:11px;margin-bottom:12px;}
+.srv-sub-ico{width:36px;height:36px;border-radius:8px;background:var(--gray-100);color:var(--navy-900);display:flex;align-items:center;justify-content:center;flex:none;transition:background .25s var(--ease),color .25s var(--ease);}
+.srv-sub-ico svg{width:17px;height:17px;}
+.srv-sub:hover .srv-sub-ico{background:var(--navy-950);color:var(--gold-500);}
+.srv-sub-n{font-family:var(--font-m);font-size:10px;color:var(--gold-600);font-weight:600;letter-spacing:.06em;}
+.srv-sub h4{font-size:15px;color:var(--navy-950);margin-bottom:9px;line-height:1.3;}
+.srv-sub > p{font-size:13px;color:var(--slate-500);line-height:1.6;margin-bottom:14px;}
+.srv-sub-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid var(--gray-200);}
+.srv-sub-list li{font-size:12px;color:var(--slate-600);display:flex;align-items:flex-start;gap:8px;line-height:1.45;}
+.srv-sub-list li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold-500);flex:none;margin-top:5px;}
+
 
 /* ============================================================
    INDUSTRIES
@@ -445,6 +480,9 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
     <symbol id="i-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9.5 10.5 14 15 21 8"/><polyline points="15 8 21 8 21 14"/></symbol>
     <symbol id="i-shieldcheck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.5v6c0 5.5 4 8.5 7.5 9.5 3.5-1 7.5-4 7.5-9.5v-6L12 2.5z"/><polyline points="8.7 12.2 11 14.5 15.3 9.7"/></symbol>
     <symbol id="i-shieldalert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.5v6c0 5.5 4 8.5 7.5 9.5 3.5-1 7.5-4 7.5-9.5v-6L12 2.5z"/><line x1="12" y1="8.5" x2="12" y2="13"/><circle cx="12" cy="16" r=".6" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-exchange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 4 21 8 17 12"/><line x1="21" y1="8" x2="7" y2="8"/><polyline points="7 20 3 16 7 12"/><line x1="3" y1="16" x2="17" y2="16"/></symbol>
+    <symbol id="i-ledger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><polyline points="9 13 11 15 15 10"/></symbol>
     <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1"/><polyline points="20.5 4.5 20.5 8.5 16.5 8.5"/></symbol>
     <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.2 2.6-5.5 6-5.5s6 2.3 6 5.5"/><circle cx="17.5" cy="8.8" r="2.4"/><path d="M21.5 20c0-2.5-1.7-4.4-4-5"/></symbol>
     <symbol id="i-barchart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="21" x2="5" y2="11"/><line x1="12" y1="21" x2="12" y2="6"/><line x1="19" y1="21" x2="19" y2="15"/></symbol>
@@ -592,83 +630,275 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
     <div class="section-head reveal">
       <span class="eyebrow">What We Do</span>
       <h2 class="section-title">Our Services</h2>
-      <p class="section-sub">Four specialist practices, each built to solve a distinct business challenge. Select a pillar to explore the full service offering.</p>
+      <p class="section-sub">Four specialist practices built on deep functional expertise — combining strategic thinking with hands-on delivery to drive measurable outcomes across finance, operations, technology, and growth.</p>
     </div>
 
-    <!-- Tab switcher -->
-    <div class="srv-tabs reveal" role="tablist">
-      <button class="srv-tab is-active" role="tab" aria-selected="true" aria-controls="panel-0" id="tab-0">
-        <svg><use href="#i-target"/></svg><span class="tab-lbl">Business &amp; Management Consultancy</span>
-      </button>
-      <button class="srv-tab" role="tab" aria-selected="false" aria-controls="panel-1" id="tab-1">
-        <svg><use href="#i-zap"/></svg><span class="tab-lbl">Automation Consulting</span>
-      </button>
-      <button class="srv-tab" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">
-        <svg><use href="#i-cpu"/></svg><span class="tab-lbl">ERP &amp; Enterprise Applications</span>
-      </button>
-      <button class="srv-tab" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">
-        <svg><use href="#i-globe"/></svg><span class="tab-lbl">GCC Partnership</span>
-      </button>
-    </div>
+    <div class="srv-shell reveal">
 
-    <!-- Panel 0: Business & Management Consultancy -->
-    <div class="srv-panel is-active" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
-      <div class="panel-intro">
-        <h3>Business &amp; Management Consultancy</h3>
-        <p>End-to-end advisory across business operations, financial processes, and risk management — from strategic planning and process redesign through to fraud prevention and controls strengthening.</p>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-card"><span class="sub-num">01</span><h4>Business Process Assessment</h4><p>Map and evaluate existing workflows to surface inefficiencies, redundancies, and improvement opportunities across the business.</p></div>
-        <div class="sub-card"><span class="sub-num">02</span><h4>Strategic Planning</h4><p>Define clear objectives, growth roadmaps, and execution frameworks aligned to your business ambitions and market context.</p></div>
-        <div class="sub-card"><span class="sub-num">03</span><h4>Process Re-engineering</h4><p>Redesign core business workflows from the ground up for speed, accuracy, scalability, and control.</p></div>
-        <div class="sub-card"><span class="sub-num">04</span><h4>Procure-to-Pay (P2P) Consulting</h4><p>Optimize the end-to-end procurement cycle — from requisition design and vendor management to purchase controls and payment terms.</p></div>
-        <div class="sub-card"><span class="sub-num">05</span><h4>Record-to-Report (R2R) Consulting</h4><p>Accelerate financial close with reliable, audit-ready reporting frameworks — covering GL review, accounting controls, and compliance management.</p></div>
-        <div class="sub-card"><span class="sub-num">06</span><h4>Financial Fraud Investigation &amp; Risk Advisory</h4><p>Detect, investigate, and prevent fraud risk through forensic reviews, whistleblower investigations, control gap analysis, and prevention frameworks.</p></div>
-      </div>
-    </div>
+      <!-- Sidebar -->
+      <nav class="srv-nav" role="tablist" aria-label="Service practices">
+        <button class="srv-nav-btn is-active" role="tab" aria-selected="true" aria-controls="srv-0" id="srv-tab-0">
+          <span class="srv-nav-ico"><svg><use href="#i-target"/></svg></span>
+          <span class="srv-nav-text">
+            <span class="srv-nav-num">01</span>
+            <span class="srv-nav-name">Business &amp; Management Consultancy</span>
+            <span class="srv-nav-tag">Strategy · Process · Risk</span>
+          </span>
+        </button>
+        <button class="srv-nav-btn" role="tab" aria-selected="false" aria-controls="srv-1" id="srv-tab-1">
+          <span class="srv-nav-ico"><svg><use href="#i-zap"/></svg></span>
+          <span class="srv-nav-text">
+            <span class="srv-nav-num">02</span>
+            <span class="srv-nav-name">Automation Consulting</span>
+            <span class="srv-nav-tag">RPA · Digital Finance · MIS</span>
+          </span>
+        </button>
+        <button class="srv-nav-btn" role="tab" aria-selected="false" aria-controls="srv-2" id="srv-tab-2">
+          <span class="srv-nav-ico"><svg><use href="#i-cpu"/></svg></span>
+          <span class="srv-nav-text">
+            <span class="srv-nav-num">03</span>
+            <span class="srv-nav-name">ERP &amp; Enterprise Applications</span>
+            <span class="srv-nav-tag">Selection · Build · Integrate</span>
+          </span>
+        </button>
+        <button class="srv-nav-btn" role="tab" aria-selected="false" aria-controls="srv-3" id="srv-tab-3">
+          <span class="srv-nav-ico"><svg><use href="#i-globe"/></svg></span>
+          <span class="srv-nav-text">
+            <span class="srv-nav-num">04</span>
+            <span class="srv-nav-name">GCC Partnership</span>
+            <span class="srv-nav-tag">Talent · Workspace · Operations</span>
+          </span>
+        </button>
+      </nav>
 
-    <!-- Panel 1: Automation Consulting -->
-    <div class="srv-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
-      <div class="panel-intro">
-        <h3>Automation Consulting</h3>
-        <p>Help organizations move from manual, error-prone processes to smart, automated workflows — reducing cost, eliminating delays, and building a foundation for digital growth.</p>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-card"><span class="sub-num">01</span><h4>Workflow Automation</h4><p>Eliminate manual bottlenecks with intelligent, rules-based automation across finance, procurement, operations, and HR functions.</p></div>
-        <div class="sub-card"><span class="sub-num">02</span><h4>Finance Digital Transformation</h4><p>Modernize financial operations through technology-led process redesign, system integration, and capability building for your finance team.</p></div>
-        <div class="sub-card"><span class="sub-num">03</span><h4>MIS Reporting</h4><p>Design and build management information systems that deliver timely, accurate, decision-ready insights to leadership and board stakeholders.</p></div>
-      </div>
-    </div>
+      <!-- Content -->
+      <div class="srv-content">
 
-    <!-- Panel 2: ERP & Enterprise Applications -->
-    <div class="srv-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
-      <div class="panel-intro">
-        <h3>ERP &amp; Enterprise Applications Consultancy</h3>
-        <p>End-to-end ERP advisory from selection through to go-live and post-implementation support — ensuring your enterprise platform is configured for your business, not the other way around.</p>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-card"><span class="sub-num">01</span><h4>ERP Selection &amp; Implementation</h4><p>Evaluate, select, and implement the right ERP platform — with a structured methodology that minimizes disruption and accelerates time to value.</p></div>
-        <div class="sub-card"><span class="sub-num">02</span><h4>ERP Customization</h4><p>Tailor ERP modules, workflows, and reporting to match your specific operational requirements without compromising system integrity.</p></div>
-        <div class="sub-card"><span class="sub-num">03</span><h4>ERP Integration</h4><p>Connect your ERP with third-party applications, data sources, and reporting tools for seamless, end-to-end data flow across the enterprise.</p></div>
-      </div>
-    </div>
+        <!-- Panel 0 -->
+        <div class="srv-body is-active" id="srv-0" role="tabpanel" aria-labelledby="srv-tab-0">
+          <div class="srv-ph">
+            <p class="srv-ph-tag">01 — Business &amp; Management Consultancy</p>
+            <h3>Transforming how organisations operate, plan, and perform</h3>
+            <p>End-to-end advisory across operations, financial processes, and risk — from ground-up process redesign and strategic planning to forensic investigations and fraud prevention. We embed alongside your teams and stay until outcomes are measurable and sustained.</p>
+          </div>
+          <div class="srv-subs">
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-layers"/></svg></span><span class="srv-sub-n">01</span></div>
+              <h4>Business Process Assessment</h4>
+              <p>Comprehensive workflow mapping using SIPOC and value stream analysis to expose inefficiencies, control gaps, and redundancies. We benchmark against industry standards and deliver a prioritised transformation roadmap leadership can act on immediately.</p>
+              <ul class="srv-sub-list">
+                <li>Current-state process mapping and documentation</li>
+                <li>Gap and root-cause analysis against best practice</li>
+                <li>Prioritised improvement and quick-win roadmap</li>
+                <li>KPI baseline and performance measurement framework</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-trending"/></svg></span><span class="srv-sub-n">02</span></div>
+              <h4>Strategic Planning</h4>
+              <p>Long-range frameworks that align leadership on growth priorities, market positioning, and resource allocation. From competitive landscape analysis to OKR-based execution planning, we translate high-level ambition into operational clarity and accountability structures that last.</p>
+              <ul class="srv-sub-list">
+                <li>3–5 year strategic roadmap and growth architecture</li>
+                <li>Market and competitive landscape benchmarking</li>
+                <li>OKR and KPI framework with executive accountability</li>
+                <li>Board-ready strategy presentation and narrative</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-refresh"/></svg></span><span class="srv-sub-n">03</span></div>
+              <h4>Process Re-engineering</h4>
+              <p>Ground-up redesign using lean and six-sigma principles — eliminating waste, compressing cycle times, and embedding quality controls from day one. We manage change alongside the redesign so adoption is as robust as the process itself.</p>
+              <ul class="srv-sub-list">
+                <li>To-be process blueprints with RACI and SLA frameworks</li>
+                <li>Standard Operating Procedures and work instructions</li>
+                <li>Change management and stakeholder engagement plan</li>
+                <li>Performance dashboard and continuous improvement cadence</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-exchange"/></svg></span><span class="srv-sub-n">04</span></div>
+              <h4>Procure-to-Pay (P2P) Consulting</h4>
+              <p>End-to-end procurement transformation — from supplier onboarding and requisition controls through three-way matching, GRN management, and payment terms optimisation. We identify automation opportunities and build controls that reduce maverick spend and payment fraud risk.</p>
+              <ul class="srv-sub-list">
+                <li>P2P process blueprint and controls matrix</li>
+                <li>Vendor policy, approval hierarchy, and onboarding framework</li>
+                <li>Three-way match and GRN exception management design</li>
+                <li>Automation opportunity assessment and roadmap</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-ledger"/></svg></span><span class="srv-sub-n">05</span></div>
+              <h4>Record-to-Report (R2R) Consulting</h4>
+              <p>Accelerate the financial close cycle with robust journal entry controls, account reconciliation frameworks, and consolidated reporting structures that satisfy both management and statutory requirements. We redesign the close calendar and build quality gates that make on-time close repeatable every period.</p>
+              <ul class="srv-sub-list">
+                <li>Close calendar redesign with ownership RACI</li>
+                <li>Reconciliation templates and sub-ledger tie-out framework</li>
+                <li>Reporting pack design for management and statutory purposes</li>
+                <li>Compliance and period-end checklist documentation</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-shieldalert"/></svg></span><span class="srv-sub-n">06</span></div>
+              <h4>Financial Fraud Investigation &amp; Risk Advisory</h4>
+              <p>Forensic accounting, digital transaction tracing, and structured investigation methodology for suspected fraud, misappropriation, and financial misconduct. We design prevention frameworks that embed detection into everyday operations so risks surface early — before material loss occurs.</p>
+              <ul class="srv-sub-list">
+                <li>Forensic review and structured investigation management</li>
+                <li>Whistleblower investigation and confidential reporting design</li>
+                <li>Control gap analysis and fraud risk register</li>
+                <li>Fraud prevention framework and early-warning indicators</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    <!-- Panel 3: GCC Partnership -->
-    <div class="srv-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
-      <div class="panel-intro">
-        <h3>GCC Partnership</h3>
-        <p>End-to-end support for global organizations establishing or scaling a Global Capability Centre (GCC) in India — from first hire to fully operational hub, with ongoing compliance and back-end support.</p>
-      </div>
-      <div class="sub-grid">
-        <div class="sub-card"><span class="sub-num">01</span><h4>Talent Acquisition</h4><p>Source, screen, and onboard skilled professionals aligned to your GCC's capability requirements, culture, and leadership expectations.</p></div>
-        <div class="sub-card"><span class="sub-num">02</span><h4>Workspace Setup</h4><p>Establish fully operational office infrastructure for your India-based GCC hub — from location selection and fit-out to IT and facilities management.</p></div>
-        <div class="sub-card"><span class="sub-num">03</span><h4>Compliance Management</h4><p>Navigate India's regulatory, statutory, and labour compliance landscape with confidence — including payroll, tax, and corporate filings.</p></div>
-        <div class="sub-card"><span class="sub-num">04</span><h4>Back-end Support</h4><p>Ongoing operational and administrative support to keep your GCC running efficiently, from finance and HR back-office to vendor management.</p></div>
-      </div>
-    </div>
+        <!-- Panel 1 -->
+        <div class="srv-body" id="srv-1" role="tabpanel" aria-labelledby="srv-tab-1">
+          <div class="srv-ph">
+            <p class="srv-ph-tag">02 — Automation Consulting</p>
+            <h3>Moving organisations from manual effort to intelligent, scalable workflows</h3>
+            <p>We identify the right automation opportunities, design the right solutions, and deploy them in a way your teams can trust and maintain. From RPA-driven back-office automation to full finance digital transformation, we bring structured execution to complex technology change.</p>
+          </div>
+          <div class="srv-subs">
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-zap"/></svg></span><span class="srv-sub-n">01</span></div>
+              <h4>Workflow Automation</h4>
+              <p>Process mining and automation opportunity assessment, followed by RPA bot design, development, and deployment across finance, procurement, HR, and operations. We establish bot governance, exception-handling protocols, and ongoing monitoring to ensure automation performance holds over time.</p>
+              <ul class="srv-sub-list">
+                <li>Automation opportunity assessment and ROI quantification</li>
+                <li>RPA bot specification, build, and UAT oversight</li>
+                <li>Exception-handling framework and escalation design</li>
+                <li>Bot governance model and performance monitoring</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-trending"/></svg></span><span class="srv-sub-n">02</span></div>
+              <h4>Finance Digital Transformation</h4>
+              <p>Modernising finance through cloud ERP migration, digital close management, automated AP/AR workflows, and real-time dashboards. We sequence technology adoption to avoid disrupting close cycles or audit readiness, and build capability alongside implementation so your team is never reliant on us.</p>
+              <ul class="srv-sub-list">
+                <li>Digital transformation blueprint and phased roadmap</li>
+                <li>System selection support and vendor evaluation</li>
+                <li>Automated AP/AR workflow design and implementation</li>
+                <li>Finance team capability-building and change management</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-barchart"/></svg></span><span class="srv-sub-n">03</span></div>
+              <h4>MIS Reporting</h4>
+              <p>Designing the data architecture and building automated management information systems that deliver decision-ready insights to leadership and board stakeholders without manual intervention. We work across Power BI, Tableau, and Zoho Analytics to build dashboards that are trusted, maintainable, and genuinely used.</p>
+              <ul class="srv-sub-list">
+                <li>MIS architecture design and data source mapping</li>
+                <li>KPI framework aligned to business objectives</li>
+                <li>Automated dashboard build and user acceptance testing</li>
+                <li>Board and management reporting pack design</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
+        <!-- Panel 2 -->
+        <div class="srv-body" id="srv-2" role="tabpanel" aria-labelledby="srv-tab-2">
+          <div class="srv-ph">
+            <p class="srv-ph-tag">03 — ERP &amp; Enterprise Applications Consultancy</p>
+            <h3>Ensuring your enterprise platform works for your business — not the other way around</h3>
+            <p>End-to-end ERP advisory from independent selection through to go-live and post-implementation support. We bring vendor-neutral perspective across SAP, Oracle, Microsoft Dynamics, Sage, and Zoho, so you get the right system — configured correctly — from day one.</p>
+          </div>
+          <div class="srv-subs">
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-clipboard"/></svg></span><span class="srv-sub-n">01</span></div>
+              <h4>ERP Selection &amp; Implementation</h4>
+              <p>Independent needs assessment, vendor shortlisting, and structured evaluation across leading ERP platforms. We manage the full implementation lifecycle — from project governance and data migration design through user acceptance testing and go-live support — reducing risk of costly overruns and post-live issues.</p>
+              <ul class="srv-sub-list">
+                <li>Business requirements specification and functional mapping</li>
+                <li>Vendor-neutral evaluation matrix and selection support</li>
+                <li>Implementation roadmap and project governance framework</li>
+                <li>Data migration strategy, UAT oversight, and go-live support</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-gear"/></svg></span><span class="srv-sub-n">02</span></div>
+              <h4>ERP Customization</h4>
+              <p>Module configuration, custom workflow design, role-based access control, and UI optimisation to align system behaviour precisely with your operational and financial processes. Every customisation is documented for long-term maintainability with structured test frameworks to validate performance before go-live.</p>
+              <ul class="srv-sub-list">
+                <li>Module configuration and custom workflow design</li>
+                <li>Role-based access control (RBAC) and security setup</li>
+                <li>Custom report and dashboard development within ERP</li>
+                <li>UAT test scripts, sign-off protocol, and cutover planning</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-cpu"/></svg></span><span class="srv-sub-n">03</span></div>
+              <h4>ERP Integration</h4>
+              <p>API-based integration between your ERP and CRM, HRMS, e-commerce platforms, banking systems, and third-party data sources for seamless enterprise data flow. We design the integration architecture, select middleware where needed, manage data migration, and reconcile outputs to ensure integrity at every layer.</p>
+              <ul class="srv-sub-list">
+                <li>Integration architecture design and middleware selection</li>
+                <li>API and connector specification and documentation</li>
+                <li>Data migration planning and reconciliation framework</li>
+                <li>End-to-end integration testing and ongoing support model</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="srv-body" id="srv-3" role="tabpanel" aria-labelledby="srv-tab-3">
+          <div class="srv-ph">
+            <p class="srv-ph-tag">04 — GCC Partnership</p>
+            <h3>Your complete partner for establishing and scaling a Global Capability Centre in India</h3>
+            <p>From first hire to fully operational hub, we manage every dimension of your India GCC — talent, workspace, compliance, and back-office operations. Our in-country expertise and established networks across Ahmedabad, Bengaluru, Hyderabad, and Pune give you speed and certainty from day one.</p>
+          </div>
+          <div class="srv-subs">
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-users"/></svg></span><span class="srv-sub-n">01</span></div>
+              <h4>Talent Acquisition</h4>
+              <p>End-to-end recruitment for your India GCC — from job architecture and competency framework design through structured assessment, offer management, and onboarding delivery. We have deep networks across finance, technology, operations, and analytics to place the right talent at speed.</p>
+              <ul class="srv-sub-list">
+                <li>Job architecture and competency framework design</li>
+                <li>Sourcing strategy and talent pipeline development</li>
+                <li>Structured assessment and interview process design</li>
+                <li>Offer management and onboarding programme delivery</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-pin"/></svg></span><span class="srv-sub-n">02</span></div>
+              <h4>Workspace Setup</h4>
+              <p>Office location advisory, vendor procurement for fit-out and IT infrastructure, regulatory approvals management, and full facilities readiness for day-one operations. From lease negotiation support to network setup and security policies, we manage the complexity so your leadership can focus on building capability.</p>
+              <ul class="srv-sub-list">
+                <li>Location analysis and city selection advisory</li>
+                <li>Vendor management for fit-out, IT, and facilities</li>
+                <li>IT infrastructure design, setup, and security policies</li>
+                <li>Regulatory approvals and day-one facilities handover</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-shieldcheck"/></svg></span><span class="srv-sub-n">03</span></div>
+              <h4>Compliance Management</h4>
+              <p>Full statutory registration, labour law compliance, payroll structuring, GST advisory, and ongoing regulatory monitoring for your India GCC entity. We maintain compliance calendars, manage filings on your behalf, and issue proactive alerts when regulatory changes affect your obligations.</p>
+              <ul class="srv-sub-list">
+                <li>Entity incorporation and statutory registrations</li>
+                <li>Labour law compliance and payroll structuring</li>
+                <li>GST registration and ongoing advisory</li>
+                <li>Compliance calendar management and regulatory monitoring</li>
+              </ul>
+            </div>
+            <div class="srv-sub">
+              <div class="srv-sub-head"><span class="srv-sub-ico"><svg><use href="#i-briefcase"/></svg></span><span class="srv-sub-n">04</span></div>
+              <h4>Back-end Support</h4>
+              <p>Scalable shared services for your India GCC — finance and accounting (bookkeeping, MIS, statutory filings), HR operations (payroll, benefits, helpdesk), IT support, and facilities management. Our model grows with your GCC from a 10-person pilot to a 1,000-seat operation without missing a beat.</p>
+              <ul class="srv-sub-list">
+                <li>Finance back-office: bookkeeping, MIS, and statutory filings</li>
+                <li>HR operations: payroll processing, benefits, and helpdesk</li>
+                <li>IT helpdesk and infrastructure support</li>
+                <li>Facilities management and vendor relationship oversight</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.srv-content -->
+    </div><!-- /.srv-shell -->
   </div>
 </section>
+
 
 <!-- ============================================================
      INDUSTRIES
@@ -1080,31 +1310,27 @@ footer{background:var(--navy-950);color:#8fa2b3;padding:clamp(52px,7vw,80px) 0 0
     sections.forEach(function(s){ navObs.observe(s); });
   }
 
-  /* Services tab switcher */
-  var tabs   = Array.prototype.slice.call(document.querySelectorAll('.srv-tab'));
-  var panels = Array.prototype.slice.call(document.querySelectorAll('.srv-panel'));
-  function switchTab(idx){
-    tabs.forEach(function(t,i){
-      t.classList.toggle('is-active', i === idx);
-      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+  /* Services sidebar switcher */
+  var srvNavBtns = Array.prototype.slice.call(document.querySelectorAll('.srv-nav-btn'));
+  var srvBodies  = Array.prototype.slice.call(document.querySelectorAll('.srv-body'));
+  function switchSrv(idx){
+    srvNavBtns.forEach(function(b,i){
+      b.classList.toggle('is-active', i === idx);
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
     });
-    panels.forEach(function(p,i){
-      p.classList.toggle('is-active', i === idx);
-    });
+    srvBodies.forEach(function(p,i){ p.classList.toggle('is-active', i === idx); });
   }
-  tabs.forEach(function(t, i){ t.addEventListener('click', function(){ switchTab(i); }); });
+  srvNavBtns.forEach(function(b,i){ b.addEventListener('click', function(){ switchSrv(i); }); });
 
-  /* Services dropdown links activate the right tab + scroll */
+  /* Nav dropdown links → scroll to services + activate panel */
   document.querySelectorAll('[data-srv-tab]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
-      var idx = parseInt(this.getAttribute('data-srv-tab'), 10);
-      switchTab(idx);
+      switchSrv(parseInt(this.getAttribute('data-srv-tab'), 10));
       setTimeout(function(){
         var srv = document.getElementById('services');
         if(srv) srv.scrollIntoView({behavior: rm ? 'auto' : 'smooth'});
       }, 50);
-      // close dropdown
       srvDrop.classList.remove('is-open');
       srvBtn.classList.remove('is-open');
       srvBtn.setAttribute('aria-expanded','false');
