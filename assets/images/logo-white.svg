@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none" class="nextattva-logo-white">
+  <!-- Merged N & T Hexagon Monogram Emblem (Dark Context Version) -->
+  <g transform="translate(4, 4)">
+    <!-- Pointy-Top Hexagon Crest with Brand Gold (#f4b41a) Rim -->
+    <polygon points="28,2 53,16 53,44 28,58 3,44 3,16" fill="rgba(255,255,255,0.08)" stroke="#f4b41a" stroke-width="2.5" stroke-linejoin="round"/>
+    
+    <!-- Letter N Portion (Crisp White): Left Vertical Stem + Diagonal Cut -->
+    <path d="M16 43V17L36 43" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Letter T Portion (Vibrant Gold #f4b41a): Vertical Stem (Shared with N) + Balanced Top Crossbar -->
+    <path d="M36 43V17" stroke="#f4b41a" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M25 17H47" stroke="#f4b41a" stroke-width="4.5" stroke-linecap="round"/>
+    
+    <!-- Joint Node -->
+    <circle cx="36" cy="17" r="2.2" fill="#ffffff"/>
+  </g>
+  
+  <!-- NexTattva Brand Typography for Dark Surface -->
+  <g transform="translate(68, 14)">
+    <!-- NEX in White, TATTVA in #f4b41a -->
+    <text x="0" y="27" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" letter-spacing="1.2">
+      <tspan fill="#ffffff">NEX</tspan><tspan fill="#f4b41a">TATTVA</tspan>
+    </text>
+    <!-- Corporate Sub-tagline in Muted Slate -->
+    <text x="1" y="42" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="700" letter-spacing="2.8" fill="#94a3b8">
+      FINANCE · CONTROLS · ERP
+    </text>
+  </g>
+</svg>
